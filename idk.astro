@@ -1,0 +1,24 @@
+---
+// Server-side code: runs at build time or during SSR
+const message = "Hello from the server!";
+---
+
+<!-- HTML Markup -->
+<button class="alert-btn" data-message={message}>
+  Click me
+</button>
+
+<!-- Client-side script: runs in the browser -->
+<script>
+  // Find all buttons on the page
+  const buttons = document.querySelectorAll('button.alert-btn');
+
+  // Handle clicks
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      // Access data attributes from the server
+      const message = button.dataset.message;
+      alert(message);
+    });
+  });
+</script>
